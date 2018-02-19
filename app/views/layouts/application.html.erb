@@ -10,6 +10,9 @@
 
   <body>
     <p>Current user: <%= current_user&.name %></p>
+    <%= link_to 'Home', user_path(current_user) if current_user %>
+    <%= link_to 'Logout', session_path, method: :delete if current_user %>
+    <hr />
     <%= yield %>
   </body>
 </html>

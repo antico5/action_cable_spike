@@ -1,6 +1,9 @@
 App.cable.subscriptions.create({ channel: "TweetChannel" },
-  { received: function(data){ console.log(data) },
-    connected: function(){ console.log('connected') }
+  {
+    received: addTweet
   }
 )
-console.log('subscribing')
+
+function addTweet(tweet){
+  $('#tweets').prepend("<p><b>" + tweet.sender + ":</b> " + tweet.message + "</p>")
+}

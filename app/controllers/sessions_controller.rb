@@ -6,5 +6,6 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.encrypted[:user_id] = nil
+    redirect_to users_path, notice: 'Logged out'
   end
 end
