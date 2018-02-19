@@ -5,5 +5,26 @@
   <%= @user.name %>
 </p>
 
+<h4>Followers</h4>
+<ul>
+  <% @user.followers.each do |follower| %>
+    <li><%= link_to follower.name, follower %></li>
+  <% end %>
+</ul>
+
+<h4>Following</h4>
+<ul>
+  <% @user.followees.each do |followee| %>
+    <li><%= link_to followee.name, followee %></li>
+  <% end %>
+</ul>
+
+<h4>Tweets</h4>
+<ul>
+  <% @user.tweets.each do |tweet| %>
+    <li><%= tweet.text %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :followees, through: :followee_followings, class_name: "User"
   has_many :followers, through: :follower_followings, class_name: "User"
 
+  has_many :tweets, dependent: :destroy
+
   def follow user
     followee_followings.create followee: user
   end

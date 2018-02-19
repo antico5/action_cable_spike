@@ -1,7 +1,10 @@
 User.destroy_all
 
-u1 = User.create name: 'User 1'
-u2 = User.create name: 'User 2'
+100.times { User.create name: Faker::Name.name }
 
-u1.follow u2
+User.all.each do |user|
+  10.times { user.tweets.create text: Faker::Hipster.sentence }
+  User.all.sample(10).each { |u| user.follow u }
+end
+
 pry
