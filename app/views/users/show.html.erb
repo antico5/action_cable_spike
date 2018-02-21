@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @user.name %></h2>
+<h1><%= @user.name %></h2>
 
-<h3>Followers</h3>
+<h2>Followers</h2>
 <ul>
   <% @user.followers.each do |follower| %>
     <li><%= link_to follower.name, follower %></li>
   <% end %>
 </ul>
 
-<h3>Following</h3>
+<h2>Following</h2>
 <ul>
   <% @user.followees.each do |followee| %>
     <li><%= link_to followee.name, followee %></li>
   <% end %>
 </ul>
 
-<h3>Tweets</h3>
+<h2>Tweets</h2>
 <% if @user == current_user %>
   <%= form_for Tweet.new do |f| %>
     <%= f.label :text %>
@@ -30,9 +30,14 @@
   <% end %>
 </ul>
 
-<h3>Feed</h3>
-<div id="tweets">
-</div>
+<% if @user == current_user %>
+  <h2>Feed</h2>
+  <div id="tweets">
+    <% @feed.tweets.each do |tweet| %>
+      <%= render tweet %>
+    <% end %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @feed = Feed.new(current_user)
   end
 
   # GET /users/new

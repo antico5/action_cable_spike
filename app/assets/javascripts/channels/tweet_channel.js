@@ -5,5 +5,5 @@ App.cable.subscriptions.create({ channel: "TweetChannel" },
 )
 
 function addTweet(tweet){
-  $('#tweets').prepend("<p><b>" + tweet.sender + ":</b> " + tweet.message + "</p>")
+  $('#tweets').prepend(tweet.html)
 }
